@@ -3,6 +3,12 @@ function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
+const buttons = document.querySelectorAll('img');
+buttons.forEach(button => {
+    console.log(button.id);
+    button.addEventListener('click',() =>{ playGame(button.id)});
+});
+
 function playRound(playerSelection, computerChoice){
     playerSelection=playerSelection.toLowerCase();
     computerChoice=computerChoice.toLowerCase();
@@ -22,8 +28,8 @@ function playRound(playerSelection, computerChoice){
     }
 }
 
-function playGame(){
-    const playerSelection = document.getElementById("playerSelection").value;
+function playGame(choice){
+    const playerSelection = choice;
     const computerChoice = getComputerChoice();
     document.getElementById("span").innerHTML=(playRound(playerSelection,computerChoice));
 }
